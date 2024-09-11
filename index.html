@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lanches BK</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            background-color: #FF5722;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            margin-top: 10px;
+        }
+        nav a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background-color: #FF5722;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .main-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        button, a {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #FF5722;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        button:hover, a:hover {
+            background-color: #E64A19;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Página de Acessibilidade</h1>
+        <nav>
+            <a href="index.html" aria-label="Ir para a página inicial">Home</a>
+            <a href="sobre.html" aria-label="Ir para a página sobre">Sobre</a>
+            <a href="contato.html" aria-label="Ir para a página de contato">Contato</a>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <h1>Conheça Nossos Sanduíches</h1>
+    <main class="main-content">
+        <section>
+            <img src="kingCostela.png" alt="Chegou o King Costela, com costela desfiada real! Vai encarar? Sanduíche no pão de brioche com hambúrguer de carne bovina grelhada, 2 fatias de queijo sabor cheddar, carne de costela bovina desfiada, chutney de cebola roxa, cebola crispy, 3 anéis de onion rings e maionese de alho." title="King Costela">
+            <a href="kingCostela.html" aria-label="Ver imagem maior do King Costela">Ver imagem maior</a>
+            <button onclick="ouvirDescricao(this)" aria-label="Ouvir descrição do King Costela">Ouvir Descrição</button>
+        </section>
+        <section>
+            <img src="whopper-catupiry.png" alt="Descubra o novo Whopper Bacon Catupiry, com hambúrguer de carne 100% bovina grelhado no fogo como churrasco, bacon crocante, Catupiry, cebola crispy, tomate em fatias e maionese." title="Whopper Bacon Catupiry">
+            <a href="whopperCatupiry.html" aria-label="Ver imagem maior do Whopper Bacon Catupiry">Ver imagem maior</a>
+            <button onclick="ouvirDescricao(this)" aria-label="Ouvir descrição do Whopper Bacon Catupiry">Ouvir Descrição</button>
+        </section>
+        <section>
+            <img src="Whopper-Rodeio.png" alt="Pão com gergelim, hambúrguer de carne bovina, cheddar fatiado, molho barbecue, 6 onion rings, tomate, alface e maionese." title="Whopper Rodeio">
+            <a href="whopperRodeio.html" aria-label="Ver imagem maior do Whopper Rodeio">Ver imagem maior</a>
+            <button onclick="ouvirDescricao(this)" aria-label="Ouvir descrição do Whopper Rodeio">Ouvir Descrição</button>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Marcello Ribeiro Silva</p>
+    </footer>
+
+    <script>
+        function ouvirDescricao(botao) {
+            window.speechSynthesis.cancel();
+            const descricaoImagem = botao.parentElement.querySelector('img').alt;
+            lerTexto(descricaoImagem);
+        }
+
+        function lerTexto(texto) {
+            const mensagem = new SpeechSynthesisUtterance(texto);
+            window.speechSynthesis.speak(mensagem);
+        }
+    </script>
+</body>
+</html>
